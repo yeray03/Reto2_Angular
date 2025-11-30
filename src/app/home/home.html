@@ -1,0 +1,22 @@
+<input type="text" placeholder="Filtrar por localidad" #filter/>
+<button class="primary" type="button" (click)="filterResults(filter.value)">Buscar</button>
+
+<table>
+    <tr>
+        <td> <h1>Hay {{ countRestaurantes() }} restaurantes"</h1> </td>
+    </tr>
+    <tr>
+        <td><p>ID</p></td>
+        <td><p>Nombre</p></td>
+        <td><p>Localidad</p></td>
+        <td><p>Ver detalles</p></td>
+    </tr>
+    @for (restaurante of filteredRestaurantesList; track $index) {
+    <tr>
+        <td><p>{{restaurante.id}}</p></td>
+        <td><p>{{restaurante.documentName}}</p></td>
+        <td><p>{{restaurante.locality}}</p></td>
+        <td><!-- <a [routerLink]="['/restaurante', restaurante.id]">Detalles</a> --> detalles</td>
+    </tr>
+    }
+</table>

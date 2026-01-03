@@ -1,14 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { RestaurantesService } from '../restaurantes-service';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule],
+  imports: [RouterModule, NgxPaginationModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
+
+  // Variables para paginación
+  p: number = 1; // Página actual para paginación
+  itemsPerPage: number = 10; // Elementos por página
 
   // Inyectar el servicio de restaurantes
   restaurantesService: RestaurantesService = inject(RestaurantesService);

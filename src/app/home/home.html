@@ -11,7 +11,7 @@
         <td><p>Localidad</p></td>
         <td><p>Ver detalles</p></td>
     </tr>
-    @for (restaurante of filteredRestaurantesList; track $index) {
+    @for (restaurante of filteredRestaurantesList | paginate: { itemsPerPage: itemsPerPage, currentPage: p } ; track $index) {
     <tr>
         <td><p>{{restaurante.id}}</p></td>
         <td><p>{{restaurante.documentName}}</p></td>
@@ -20,3 +20,4 @@
     </tr>
     }
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

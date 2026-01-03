@@ -16,7 +16,7 @@
         <td><p>{{restaurante.id}}</p></td>
         <td><p>{{restaurante.documentName}}</p></td>
         <td><p>{{restaurante.locality}}</p></td>
-        <td><!-- <a [routerLink]="['/restaurante', restaurante.id]">Detalles</a> --> detalles</td>
+        <td><a [routerLink]="['/details', restaurante.id]">Detalles</a></td>
     </tr>
     }
 </table>

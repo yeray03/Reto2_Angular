@@ -20,6 +20,13 @@ export class RestaurantesService {
     return restauranteJson[0] ?? {};
   }
 
+  // Obtener restaurante por ID
+  async getRestauranteById(id: string): Promise<any | undefined> {
+    const data = await fetch(`${this.url}?id=${id}`);
+    const restauranteJson = await data.json();
+    return restauranteJson[0] ?? {};
+  }
+
   // Enviar solicitud de reserva
   submitApplication(id: string, name: string, location: string) {
     console.log(

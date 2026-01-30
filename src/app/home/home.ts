@@ -22,13 +22,21 @@ export class Home {
   restaurantesList: any[] = [];
   filteredRestaurantesList: any[] = [];
 
-  // Cargar todos los restaurantes al inicializar el componente 
+  // Array de localidades para el filtro
+  localidades: string[] = [];
+
+  // Cargar todos los restaurantes y localidades al inicializar el componente 
   constructor() {
     this.restaurantesService
       .getAllRestaurantes()
       .then((restaurantesList: any[]) => {
         this.restaurantesList = restaurantesList;
         this.filteredRestaurantesList = restaurantesList;
+
+        // Obtener las localidades
+        this.restaurantesService.getAllLocalities().then((localidades: string[]) => {
+          this.localidades = localidades;
+        });
       });
   }
 

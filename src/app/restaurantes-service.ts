@@ -12,6 +12,20 @@ export class RestaurantesService {
     const data = await fetch(this.url);
     return (await data.json()) ?? [];
   }
+  
+  // Obtener todas las localidades
+  async getAllLocalities(): Promise<string[]> {
+    const data = await fetch(this.url);
+    const dataJson = await data.json();
+    let localidades: string[] = [];
+    for (let i = 0; i < dataJson.length; i++) {
+
+      if (dataJson[i].locality !== "" && !localidades.includes(dataJson[i].locality)) {
+        localidades.push(dataJson[i].locality);
+      }
+    }
+    return localidades.sort();
+  }
 
   // Obtener restaurante por localidad 
   async getRestauranteByLocality(locality: string): Promise<any | undefined> {

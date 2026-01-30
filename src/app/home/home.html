@@ -1,6 +1,14 @@
 <input type="text" placeholder="Filtrar por localidad" #filter/>
 <button class="primary" type="button" (click)="filterResults(filter.value)">Buscar</button>
-
+<br/>
+<label for="localidades">Selecciona una localidad</label>
+<br/>
+<select id="localidades" #selectLocalidad (change)="filterResults(selectLocalidad.value)">
+    <option value="">Todas las localidades</option>
+     @for(localidad of localidades; track localidad){
+        <option>{{localidad}}</option>
+     }
+</select>
 <table>
     <tr>
         <td> <h1>Hay {{ countRestaurantes() }} restaurantes"</h1> </td>
